@@ -28,7 +28,7 @@
     - name: Run Docker Container
       community.docker.docker_container:
         name: calculator
-        image: calc
+        image: hrus/calc
         state: started
         detach: true
         interactive: true
