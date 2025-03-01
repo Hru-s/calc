@@ -4,6 +4,9 @@
   remote_user: harshal
   become: false
 
+  vars:
+    ansible_connection: local
+
   tasks:
     - name: Install Python Docker SDK
       pip:
