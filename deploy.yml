@@ -1,7 +1,7 @@
 ---
 - name: Pull Docker Image from Docker Hub
   hosts: localhost
-  remote_user: hrushi
+  remote_user: harshal
   become: false
 
   tasks:
@@ -10,13 +10,8 @@
         name: docker
         executable: pip3
 
-    - name: Ensure Docker service is started
-      service:
-        name: docker
-        state: started
-
     - name: Pull Docker Image
-      community.docker.docker_image:
+      docker_image:
         name: "hrus/calc"
         source: pull
       register: docker_pull_result
@@ -25,11 +20,10 @@
       debug:
         var: docker_pull_result
 
-    - name: Run Docker Container
-      community.docker.docker_container:
-        name: calculator
-        image: hrus/calc
+    - name: Start Docker service
+      service:
+        name: docker
         state: started
-        detach: true
-        interactive: true
-        tty: true
+
+    - name: Running container
+      shell: docker run -it -d --name calculator hrus/calc /bin/bash
