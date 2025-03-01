@@ -33,7 +33,8 @@ pipeline {
         }
         stage('Build Jar') {
             steps {
-                sh 'mvn clean package -DskipTests'  // Build the .jar file
+                sh 'mvn clean package'
+                sh 'mv target/*.jar target/calculator.jar'  // Build the .jar file
             }
         }
 
