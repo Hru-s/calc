@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_IMAGE_NAME = 'calc'
+        DOCKER_IMAGE_NAME = 'hrus/calc'
         GITHUB_REPO_URL = 'https://github.com/Hru-s/calc.git'
     }
 
