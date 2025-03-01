@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', 'DockerHubCred') {
-                        sh 'docker push calc'
+                        sh 'docker push hrus/calc'
                     }
                 }
             }
