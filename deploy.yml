@@ -1,0 +1,35 @@
+---
+- name: Pull Docker Image from Docker Hub
+  hosts: localhost
+  remote_user: hrushi
+  become: false
+
+  tasks:
+    - name: Install Python Docker SDK
+      pip:
+        name: docker
+        executable: pip3
+
+    - name: Ensure Docker service is started
+      service:
+        name: docker
+        state: started
+
+    - name: Pull Docker Image
+      community.docker.docker_image:
+        name: "calc"
+        source: pull
+      register: docker_pull_result
+
+    - name: Display Docker Pull Result
+      debug:
+        var: docker_pull_result
+
+    - name: Run Docker Container
+      community.docker.docker_container:
+        name: calculator
+        image: calc
+        state: started
+        detach: true
+        interactive: true
+        tty: true
