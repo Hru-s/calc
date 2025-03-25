@@ -8,7 +8,7 @@ public class calc {
 
             while (true) {
 
-                System.out.println("\nScientific Calculator Menu: VIVA ");
+                System.out.println("\nScientific Calculator Menu: VIVA 2.0");
                 System.out.println("1. Square Root (√x)");
                 System.out.println("2. Factorial (x!)");
                 System.out.println("3. Natural Logarithm (ln(x))");
